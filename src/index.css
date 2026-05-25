@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+@media print {
+  @page {
+    margin: 1cm;
+    size: A4 portrait;
+  }
+  
+  body {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    background-color: white !important;
+    width: 1280px !important;
+    transform-origin: top left;
+    zoom: 0.58; /* Scales down 1280px to comfortably fit ~794px A4 width */
+  }
+
+  /* Force container to use full printable width */
+  main.max-w-7xl {
+    max-width: 1280px !important;
+    width: 1280px !important;
+    padding: 0 !important;
+  }
+
+  /* Hide sliders when printing to make it look like a static infographic */
+  input[type="range"] {
+    display: none !important;
+  }
+
+  /* Force shadows and bg colors to render */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  
+  /* Avoid breaking inside cards */
+  .rounded-2xl, .rounded-\[2rem\] {
+    break-inside: avoid;
+  }
+  
+  .print-page-break {
+    break-before: page;
+    page-break-before: always;
+  }
+}
